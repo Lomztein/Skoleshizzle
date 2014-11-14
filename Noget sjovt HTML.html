@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Faggot Simulator 2015</title>
+		<style>
+			#boks {
+				position:absolute;
+				top: 30%;
+				left: 50%;
+				margin-left: -125px;
+				width: 250px;
+				font-family: Verdana;
+			}			
+		</style>
+		<script>
+			function ReadX() {
+
+  				var indTal = "";
+    			var udTal;
+  				indTal = document.getElementById("tal").value;  
+				udTal = Omregn(indTal);
+    			document.getElementById("res").innerHTML = "Resultat: " + udTal;	
+			}
+					
+			function Omregn(tal) {
+
+				var absMax = 256;
+				var base = 2;
+				tal = parseInt (tal);
+				var ans = "";
+
+				var max = 1;
+				while (max < tal - max + 1) max *= base;
+
+				while (max >= 1 && absMax > 0) {
+					var loc = tal - max;
+					if (loc > -0.1) {
+						ans += "1";
+						tal -= max;
+						max /= base;
+					}else{
+						ans += "0";
+						max /= base;
+					}
+
+					absMax -= 1;
+					if (absMax < 1) { return "Too many iterations, shutting loop down."}
+				}
+				ans = reverse(ans);
+				return ans;
+
+			}
+
+			function Power (num, pow) {
+				for (var i=0;i<pow;i++) {
+					num *= num;
+				}
+				return num;
+			}
+
+			function reverse(s) {
+				var o = '';
+				for (var i = s.length - 1; i >= 0; i--)
+			    	o += s[i];
+			 	return o;
+			}
+ 		</script>
+		
+	</head>
+	
+	<body>
+		<div id="boks">
+			Indtast tal der skal omregnes
+			<input id="tal" onkeyup="ReadX()" size="8"><br>			
+			<p  id="res">Resultat</p>
+		</div>		
+	</body>
+</html>
